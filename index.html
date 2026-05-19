@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Final - Estrutura de Dados em C</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #f1f5f9;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    aside {
+      width: 320px;
+      background: #111827;
+      padding: 20px;
+      overflow-y: auto;
+      border-right: 2px solid #1e293b;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    aside h1 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
+
+    aside ul {
+      list-style: none;
+    }
+
+    aside li {
+      margin-bottom: 10px;
+    }
+
+    aside button {
+      width: 100%;
+      text-align: left;
+      background: #1e293b;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 15px;
+    }
+
+    aside button:hover {
+      background: #334155;
+    }
+
+    main {
+      margin-left: 340px;
+      padding: 40px;
+      width: calc(100% - 340px);
+    }
+
+    .section {
+      display: none;
+      animation: fade 0.3s ease-in-out;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #38bdf8;
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+
+    h3 {
+      margin-top: 25px;
+      margin-bottom: 10px;
+      color: #7dd3fc;
+    }
+
+    p, li {
+      line-height: 1.7;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #334155;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    table th, table td {
+      border: 1px solid #334155;
+      padding: 12px;
+      text-align: left;
+    }
+
+    table th {
+      background: #334155;
+    }
+
+    code {
+      background: #0f172a;
+      padding: 2px 6px;
+      border-radius: 5px;
+      color: #38bdf8;
+    }
+
+    .highlight {
+      color: #facc15;
+      font-weight: bold;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        flex-direction: column;
+      }
+
+      aside {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      main {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <aside>
+    <h1>📘 Projeto Final</h1>
+    <ul>
+      <li><button onclick="showSection('visao')">📌 Visão Geral</button></li>
+      <li><button onclick="showSection('objetivos')">🎯 Objetivos</button></li>
+      <li><button onclick="showSection('tema')">🎨 Tema e Personalização</button></li>
+      <li><button onclick="showSection('tabuleiro')">🌍 Tabuleiro</button></li>
+      <li><button onclick="showSection('movimentacao')">🧭 Movimentação</button></li>
+      <li><button onclick="showSection('interacoes')">⚔️ Interações</button></li>
+      <li><button onclick="showSection('obstaculos')">🧱 Obstáculos</button></li>
+      <li><button onclick="showSection('estruturas')">🧠 Estruturas de Dados</button></li>
+      <li><button onclick="showSection('analise')">📊 Análise de Memória</button></li>
+      <li><button onclick="showSection('entregas')">📄 Entregas</button></li>
+      <li><button onclick="showSection('avaliacao')">🧪 Avaliação</button></li>
+      <li><button onclick="showSection('extras')">🚀 Extras</button></li>
+    </ul>
+  </aside>
+
+  <main>
+
+    <section id="visao" class="section active">
+      <h2>📌 Visão Geral</h2>
+
+      <div class="card">
+        <p>
+          Neste projeto, os alunos deverão desenvolver uma simulação de ecossistema em linguagem C utilizando estruturas de dados e algoritmos para controlar entidades, movimentações, interações e evolução do ambiente ao longo do tempo.
+        </p>
+
+        <p>
+          O sistema deverá executar automaticamente diversas rodadas até que uma condição de vitória seja atingida.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🔍 Focos principais do projeto</h3>
+        <ul>
+          <li>Estruturas de dados</li>
+          <li>Organização lógica</li>
+          <li>Escalabilidade</li>
+          <li>Eficiência computacional</li>
+          <li>Uso de memória</li>
+          <li>Simulação dinâmica</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="objetivos" class="section">
+      <h2>🎯 Objetivos Pedagógicos</h2>
+
+      <div class="card">
+        <ul>
+          <li>Aplicar estruturas de dados em problemas reais</li>
+          <li>Trabalhar com matrizes, vetores, structs e ponteiros</li>
+          <li>Manipular memória em C</li>
+          <li>Implementar algoritmos de simulação</li>
+          <li>Refletir sobre eficiência computacional</li>
+          <li>Compreender escalabilidade de algoritmos</li>
+          <li>Analisar impacto de decisões arquiteturais</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="tema" class="section">
+      <h2>🎨 Tema e Personalização</h2>
+
+      <div class="card">
+        <h3>🧩 Tema Base</h3>
+        <p>
+          O tema padrão da simulação será:
+        </p>
+
+        <ul>
+          <li>Ovelha</li>
+          <li>Lobo</li>
+          <li>Caçador</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>🎭 Personalização Permitida</h3>
+        <p>
+          Os personagens poderão ser alterados livremente.
+        </p>
+
+        <ul>
+          <li>Humanos, zumbis e soldados</li>
+          <li>Peixes, tubarões e mergulhadores</li>
+          <li>Robôs, vírus e antivírus</li>
+          <li>Magos, monstros e cavaleiros</li>
+          <li>Aliens, astronautas e caçadores</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>⚠️ Restrição da Personalização</h3>
+
+        <p>
+          Mesmo alterando os personagens, o grupo deverá manter:
+        </p>
+
+        <ul>
+          <li>A mesma complexidade lógica</li>
+          <li>Três facções principais</li>
+          <li>Interações equivalentes</li>
+          <li>Reprodução/evolução</li>
+          <li>Combate/sobrevivência</li>
+          <li>Obstáculos fixos no mapa</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="tabuleiro" class="section">
+      <h2>🌍 Tabuleiro</h2>
+
+      <div class="card">
+        <h3>📏 Dimensão</h3>
+
+        <p>
+          O tamanho do tabuleiro deverá ser escolhido pelo usuário no início da execução.
+        </p>
+
+        <p>
+          O menor tamanho permitido será <span class="highlight">5x5</span>.
+        </p>
+
+        <p>
+          O sistema deverá funcionar corretamente para diferentes tamanhos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>📊 Proporções Automáticas</h3>
+
+        <p>
+          A quantidade de personagens e obstáculos deverá ser calculada automaticamente com base no tamanho do tabuleiro.
+        </p>
+
+        <table>
+          <tr>
+            <th>Elemento</th>
+            <th>Percentual</th>
+          </tr>
+          <tr>
+            <td>Facção 1</td>
+            <td>12%</td>
+          </tr>
+          <tr>
+            <td>Facção 2</td>
+            <td>12%</td>
+          </tr>
+          <tr>
+            <td>Facção 3</td>
+            <td>5%</td>
+          </tr>
+          <tr>
+            <td>Obstáculos</td>
+            <td>10%</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>📌 Regras</h3>
+        <ul>
+          <li>Todos os elementos devem ser posicionados aleatoriamente</li>
+          <li>Não pode haver sobreposição</li>
+          <li>Obstáculos não podem se mover</li>
+          <li>Personagens não podem nascer sobre obstáculos</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="movimentacao" class="section">
+      <h2>🧭 Movimentação</h2>
+
+      <div class="card">
+        <ul>
+          <li>Cima</li>
+          <li>Baixo</li>
+          <li>Esquerda</li>
+          <li>Direita</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>📌 Regras</h3>
+
+        <ul>
+          <li>A movimentação deverá ser aleatória</li>
+          <li>Não pode sair do mapa</li>
+          <li>Não pode atravessar obstáculos</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="interacoes" class="section">
+      <h2>⚔️ Regras de Interação</h2>
+
+      <div class="card">
+        <h3>🔴 Relação de Predação/Combate</h3>
+        <p>Uma facção deverá ser capaz de eliminar outra.</p>
+      </div>
+
+      <div class="card">
+        <h3>🟢 Relação de Proteção/Salvamento</h3>
+        <p>Uma facção deverá proteger outra.</p>
+      </div>
+
+      <div class="card">
+        <h3>🟡 Relação de Risco</h3>
+        <p>Uma facção deverá possuir condição de vulnerabilidade.</p>
+      </div>
+
+      <div class="card">
+        <h3>🔵 Reprodução/Evolução</h3>
+        <p>Entidades iguais deverão poder gerar novas entidades.</p>
+      </div>
+    </section>
+
+    <section id="obstaculos" class="section">
+      <h2>🧱 Obstáculos</h2>
+
+      <div class="card">
+        <p>
+          O sistema deverá possuir pelo menos dois tipos diferentes de obstáculos.
+        </p>
+
+        <ul>
+          <li>Árvore</li>
+          <li>Pedra</li>
+          <li>Casa</li>
+          <li>Rio</li>
+          <li>Muro</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>📌 Regras</h3>
+        <ul>
+          <li>Não se movem</li>
+          <li>Bloqueiam movimentação</li>
+          <li>Ocupam espaço permanentemente</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="estruturas" class="section">
+      <h2>🧠 Estruturas de Dados</h2>
+
+      <div class="card">
+        <p>
+          Os grupos possuem liberdade para escolher qualquer estrutura de dados.
+        </p>
+
+        <ul>
+          <li>Matrizes</li>
+          <li>Vetores</li>
+          <li>Listas encadeadas</li>
+          <li>Pilhas</li>
+          <li>Filas</li>
+          <li>Structs</li>
+          <li>Ponteiros</li>
+          <li>Alocação dinâmica</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>⚠️ Importante</h3>
+
+        <p>
+          Não existe estrutura “correta”.
+        </p>
+
+        <p>
+          Parte da avaliação será baseada:
+        </p>
+
+        <ul>
+          <li>Na justificativa técnica</li>
+          <li>Na eficiência</li>
+          <li>Na organização da solução</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="analise" class="section">
+      <h2>📊 Análise de Memória</h2>
+
+      <div class="card">
+        <p>
+          Após a entrega da primeira versão, o código será submetido a um analisador estático desenvolvido pelo professor.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🧠 O que será analisado</h3>
+
+        <ul>
+          <li>Uso de memória</li>
+          <li>Escalabilidade</li>
+          <li>Crescimento computacional</li>
+          <li>Impacto dos loops</li>
+          <li>Impacto das estruturas utilizadas</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>📌 O analisador considerará</h3>
+
+        <ul>
+          <li>Variáveis primitivas</li>
+          <li>Arrays</li>
+          <li>Structs</li>
+          <li>Alocação dinâmica</li>
+          <li>Quantidade de loops</li>
+          <li>Crescimento de memória por repetição</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>📈 Projeções de Escalabilidade</h3>
+
+        <table>
+          <tr>
+            <th>Cenário</th>
+            <th>Rodadas</th>
+          </tr>
+          <tr>
+            <td>Pequeno</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Médio</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td>Grande</td>
+            <td>100</td>
+          </tr>
+          <tr>
+            <td>Extremo</td>
+            <td>1000</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section id="entregas" class="section">
+      <h2>📄 Entregas Obrigatórias</h2>
+
+      <div class="card">
+        <h3>✅ Entrega 1</h3>
+
+        <ul>
+          <li>Código-fonte funcional em C</li>
+          <li>Relatório técnico</li>
+          <li>Estruturas utilizadas</li>
+          <li>Justificativa das escolhas</li>
+          <li>Estratégia da solução</li>
+          <li>Principais dificuldades</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>🔥 Entrega 2</h3>
+
+        <ul>
+          <li>Código otimizado</li>
+          <li>Melhorias implementadas</li>
+          <li>Estratégias de otimização</li>
+          <li>Análise crítica da solução</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="avaliacao" class="section">
+      <h2>🧪 Critérios de Avaliação</h2>
+
+      <div class="card">
+        <table>
+          <tr>
+            <th>Critério</th>
+            <th>Peso</th>
+          </tr>
+          <tr>
+            <td>Funcionamento da simulação</td>
+            <td>35%</td>
+          </tr>
+          <tr>
+            <td>Estruturas de dados utilizadas</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td>Organização do código</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td>Relatório técnico</td>
+            <td>10%</td>
+          </tr>
+          <tr>
+            <td>Eficiência e otimização</td>
+            <td>20%</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section id="extras" class="section">
+      <h2>🚀 Desafios Extras</h2>
+
+      <div class="card">
+        <ul>
+          <li>Inteligência artificial simples</li>
+          <li>Sistema de energia/fome</li>
+          <li>Clima</li>
+          <li>Múltiplos mapas</li>
+          <li>Estatísticas em tempo real</li>
+          <li>Eventos aleatórios</li>
+          <li>Diferentes biomas</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>📅 Considerações Finais</h3>
+
+        <p>
+          O objetivo do projeto não é apenas “fazer funcionar”.
+        </p>
+
+        <p>
+          O principal objetivo é compreender:
+        </p>
+
+        <ul>
+          <li>Como estruturas de dados impactam desempenho</li>
+          <li>Como algoritmos escalam</li>
+          <li>Como decisões arquiteturais afetam memória</li>
+          <li>Como diferentes soluções resolvem o mesmo problema com custos computacionais distintos</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
