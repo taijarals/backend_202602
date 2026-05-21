@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projeto Integrador Backend</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    aside {
+      width: 320px;
+      background: #111827;
+      border-right: 1px solid #334155;
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      overflow-y: auto;
+    }
+
+    aside h1 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #38bdf8;
+    }
+
+    aside ul {
+      list-style: none;
+    }
+
+    aside li {
+      margin-bottom: 10px;
+    }
+
+    aside a {
+      color: #cbd5e1;
+      text-decoration: none;
+      display: block;
+      padding: 10px;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+
+    aside a:hover {
+      background: #1e293b;
+      color: white;
+    }
+
+    main {
+      margin-left: 320px;
+      padding: 40px;
+      width: calc(100% - 320px);
+    }
+
+    section {
+      margin-bottom: 60px;
+      background: #111827;
+      padding: 30px;
+      border-radius: 16px;
+      border: 1px solid #334155;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      color: #38bdf8;
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+
+    h3 {
+      color: #7dd3fc;
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+
+    p, li {
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    code {
+      background: #1e293b;
+      padding: 2px 6px;
+      border-radius: 6px;
+      color: #93c5fd;
+    }
+
+    pre {
+      background: #020617;
+      padding: 20px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-top: 15px;
+      border: 1px solid #334155;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #334155;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #1e293b;
+      color: #7dd3fc;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #334155;
+    }
+
+    .highlight {
+      background: #082f49;
+      padding: 15px;
+      border-left: 5px solid #38bdf8;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    @media(max-width: 900px) {
+      aside {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      main {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      body {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <aside>
+    <h1>📚 Projeto Backend</h1>
+
+    <ul>
+      <li><a href="#visao">Visão Geral</a></li>
+      <li><a href="#objetivos">Objetivos</a></li>
+      <li><a href="#arquitetura">Arquitetura</a></li>
+      <li><a href="#estrutura">Estrutura</a></li>
+      <li><a href="#camadas">Camadas</a></li>
+      <li><a href="#provider">Provider Pattern</a></li>
+      <li><a href="#entidades">Entidades Globais</a></li>
+      <li><a href="#seguranca">Segurança</a></li>
+      <li><a href="#modulos">Módulos</a></li>
+      <li><a href="#avaliacao">Avaliação</a></li>
+      <li><a href="#fluxo">Fluxo</a></li>
+      <li><a href="#conclusao">Conclusão</a></li>
+    </ul>
+  </aside>
+
+  <main>
+
+    <section id="visao">
+      <h2>📚 Visão Geral</h2>
+      <p>
+        O objetivo deste projeto é desenvolver uma plataforma educacional baseada em metodologias ativas utilizando arquitetura backend moderna.
+      </p>
+
+      <div class="highlight">
+        Cada grupo desenvolverá um módulo independente dentro de um único ecossistema.
+      </div>
+    </section>
+
+    <section id="objetivos">
+      <h2>🎯 Objetivos Pedagógicos</h2>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>🌐 Backend</h3>
+          <ul>
+            <li>Arquitetura</li>
+            <li>APIs REST</li>
+            <li>HTTP</li>
+            <li>JSON</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>💾 Banco</h3>
+          <ul>
+            <li>SQL</li>
+            <li>Modelagem</li>
+            <li>Supabase</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>⚙️ Engenharia</h3>
+          <ul>
+            <li>FastAPI</li>
+            <li>Camadas</li>
+            <li>Git/GitHub</li>
+            <li>Documentação</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="arquitetura">
+      <h2>🏗️ Arquitetura Geral</h2>
+
+      <pre>
+main
+ ├── core/
+ ├── shared/
+ ├── modules/
+ │    ├── grupo1/
+ │    ├── grupo2/
+ │    ├── grupo3/
+ │    └── grupo4/
+      </pre>
+
+      <p>
+        Cada grupo possuirá sua própria branch e seu próprio banco Supabase.
+      </p>
+    </section>
+
+    <section id="estrutura">
+      <h2>📁 Estrutura Obrigatória</h2>
+
+      <pre>
+project/
+│
+├── pages/
+├── services/
+├── repositories/
+├── providers/
+├── api/
+├── models/
+├── database/
+├── docs/
+└── utils/
+      </pre>
+    </section>
+
+    <section id="camadas">
+      <h2>🧠 Organização em Camadas</h2>
+
+      <div class="card-grid">
+
+        <div class="card">
+          <h3>🖥️ pages</h3>
+          <p>Telas Streamlit e interface.</p>
+        </div>
+
+        <div class="card">
+          <h3>⚙️ services</h3>
+          <p>Regras de negócio e processamento.</p>
+        </div>
+
+        <div class="card">
+          <h3>💾 repositories</h3>
+          <p>Acesso aos dados.</p>
+        </div>
+
+        <div class="card">
+          <h3>🔄 providers</h3>
+          <p>Escolha da estratégia de persistência.</p>
+        </div>
+
+        <div class="card">
+          <h3>🌐 api</h3>
+          <p>Implementação FastAPI.</p>
+        </div>
+
+        <div class="card">
+          <h3>🧩 models</h3>
+          <p>Entidades do sistema.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="provider">
+      <h2>🔄 Provider Pattern</h2>
+
+      <p>
+        O Provider Pattern permite trocar a estratégia de acesso aos dados sem alterar o restante do sistema.
+      </p>
+
+      <h3>📦 Interface Base</h3>
+
+      <pre>
+class DatabaseProvider:
+
+    def get_all(self):
+        pass
+
+    def create(self, data):
+        pass
+      </pre>
+
+      <h3>🏭 Provider Factory</h3>
+
+      <pre>
+provider = ProviderFactory.create("sql")
+      </pre>
+
+      <div class="highlight">
+        O restante do sistema não precisa saber se os dados vêm de SQL, Supabase ou FastAPI.
+      </div>
+    </section>
+
+    <section id="entidades">
+      <h2>🧱 Entidades Globais</h2>
+
+      <ul>
+        <li>Aluno</li>
+        <li>Professor</li>
+        <li>Disciplina</li>
+        <li>Turma</li>
+        <li>Pontuação</li>
+      </ul>
+
+      <h3>📄 Script Base</h3>
+
+      <pre>
+CREATE TABLE alunos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(100)
+);
+      </pre>
+    </section>
+
+    <section id="seguranca">
+      <h2>🔐 Segurança e Qualidade</h2>
+
+      <div class="card-grid">
+
+        <div class="card">
+          <h3>✔️ Autenticação</h3>
+          <p>Controle de acesso e login.</p>
+        </div>
+
+        <div class="card">
+          <h3>✔️ Validação</h3>
+          <p>Verificação de dados recebidos.</p>
+        </div>
+
+        <div class="card">
+          <h3>✔️ Logs</h3>
+          <p>Registro de operações importantes.</p>
+        </div>
+
+        <div class="card">
+          <h3>✔️ Tratamento de Erros</h3>
+          <p>Respostas controladas e seguras.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="modulos">
+      <h2>🧪 Módulos do Projeto</h2>
+
+      <p>
+        Clique em um módulo para visualizar os detalhes completos.
+      </p>
+
+      <div class="card-grid">
+
+        <div class="card" onclick="toggleModule('mod1')" style="cursor:pointer;">
+          <h3>1️⃣ Sistema de Desafios</h3>
+          <p>
+            Cadastro de desafios, votação, ranking e pontuação.
+          </p>
+        </div>
+
+        <div class="card" onclick="toggleModule('mod2')" style="cursor:pointer;">
+          <h3>2️⃣ Mini-Provas</h3>
+          <p>
+            Provas rápidas gamificadas com cronômetro.
+          </p>
+        </div>
+
+        <div class="card" onclick="toggleModule('mod3')" style="cursor:pointer;">
+          <h3>3️⃣ Gamificação</h3>
+          <p>
+            Medalhas, níveis, ranking e recompensas.
+          </p>
+        </div>
+
+        <div class="card" onclick="toggleModule('mod4')" style="cursor:pointer;">
+          <h3>4️⃣ Feedback Instantâneo</h3>
+          <p>
+            Enquetes e respostas em tempo real.
+          </p>
+        </div>
+
+        <div class="card" onclick="toggleModule('mod5')" style="cursor:pointer;">
+          <h3>5️⃣ Formação de Equipes</h3>
+          <p>
+            Formação automática de grupos.
+          </p>
+        </div>
+
+        <div class="card" onclick="toggleModule('mod6')" style="cursor:pointer;">
+          <h3>6️⃣ Missões Educacionais</h3>
+          <p>
+            Jornadas de aprendizagem e progressão.
+          </p>
+        </div>
+
+      </div>
+
+      <div id="mod1" class="module-detail" style="display:none; margin-top:30px;">
+        <h3>🏆 Sistema de Desafios</h3>
+
+        <h4>🎯 Objetivo</h4>
+        <p>
+          Permitir que professores criem desafios relacionados a disciplinas e assuntos específicos.
+        </p>
+
+        <h4>👨‍🏫 Funcionalidades do Professor</h4>
+        <ul>
+          <li>Cadastrar desafios</li>
+          <li>Editar desafios</li>
+          <li>Definir disciplina</li>
+          <li>Definir prazo</li>
+          <li>Visualizar ranking</li>
+        </ul>
+
+        <h4>👨‍🎓 Funcionalidades do Aluno</h4>
+        <ul>
+          <li>Visualizar desafios</li>
+          <li>Enviar respostas</li>
+          <li>Acompanhar pontuação</li>
+        </ul>
+
+        <h4>⚙️ Regras de Negócio</h4>
+        <ul>
+          <li>Cálculo automático de média</li>
+          <li>Sistema de votação</li>
+          <li>Ranking geral</li>
+          <li>Histórico de desafios</li>
+        </ul>
+
+        <h4>🧩 Entidades Sugeridas</h4>
+        <ul>
+          <li>desafio</li>
+          <li>submissao</li>
+          <li>voto</li>
+          <li>nota</li>
+          <li>ranking</li>
+        </ul>
+      </div>
+
+      <div id="mod2" class="module-detail" style="display:none; margin-top:30px;">
+        <h3>⏱️ Sistema de Mini-Provas</h3>
+
+        <h4>🎯 Objetivo</h4>
+        <p>
+          Criar um sistema de avaliações rápidas gamificadas.
+        </p>
+
+        <h4>📋 Regras Obrigatórias</h4>
+        <ul>
+          <li>5 minutos totais</li>
+          <li>5 questões</li>
+          <li>1 minuto por questão</li>
+        </ul>
+
+        <h4>👨‍🏫 Funcionalidades do Professor</h4>
+        <ul>
+          <li>Cadastrar provas</li>
+          <li>Cadastrar questões</li>
+          <li>Visualizar estatísticas</li>
+          <li>Acompanhar desempenho</li>
+        </ul>
+
+        <h4>👨‍🎓 Funcionalidades do Aluno</h4>
+        <ul>
+          <li>Responder provas</li>
+          <li>Visualizar cronômetro</li>
+          <li>Acompanhar pontuação</li>
+        </ul>
+
+        <h4>⚙️ Sistema Deve Possuir</h4>
+        <ul>
+          <li>Cronômetro global</li>
+          <li>Cronômetro por questão</li>
+          <li>Correção automática</li>
+          <li>Ranking</li>
+          <li>Histórico de desempenho</li>
+        </ul>
+
+        <h4>🧩 Entidades Sugeridas</h4>
+        <ul>
+          <li>prova</li>
+          <li>questao</li>
+          <li>resposta</li>
+          <li>tentativa</li>
+          <li>pontuacao</li>
+        </ul>
+      </div>
+
+      <div id="mod3" class="module-detail" style="display:none; margin-top:30px;">
+        <h3>🎮 Sistema de Gamificação</h3>
+
+        <h4>🎯 Objetivo</h4>
+        <p>
+          Criar mecanismos de engajamento utilizando pontuação e progressão.
+        </p>
+
+        <h4>⚙️ Funcionalidades Obrigatórias</h4>
+        <ul>
+          <li>Ranking geral</li>
+          <li>Medalhas</li>
+          <li>Níveis</li>
+          <li>Streaks</li>
+          <li>Recompensas</li>
+        </ul>
+
+        <h4>🧠 Sistema Deve Calcular</h4>
+        <ul>
+          <li>Pontos por atividade</li>
+          <li>Progressão de nível</li>
+          <li>Ranking semanal</li>
+          <li>Ranking geral</li>
+        </ul>
+
+        <h4>🧩 Entidades Sugeridas</h4>
+        <ul>
+          <li>medalha</li>
+          <li>conquista</li>
+          <li>ranking</li>
+          <li>nivel</li>
+          <li>historico_pontos</li>
+        </ul>
+      </div>
+
+      <div id="mod4" class="module-detail" style="display:none; margin-top:30px;">
+        <h3>📊 Feedback Instantâneo</h3>
+
+        <h4>🎯 Objetivo</h4>
+        <p>
+          Permitir interação rápida entre professor e turma.
+        </p>
+
+        <h4>⚙️ Funcionalidades Obrigatórias</h4>
+        <ul>
+          <li>Criação de enquetes</li>
+          <li>Perguntas rápidas</li>
+          <li>Respostas em tempo real</li>
+          <li>Estatísticas</li>
+          <li>Gráficos</li>
+        </ul>
+
+        <h4>🧩 Entidades Sugeridas</h4>
+        <ul>
+          <li>enquete</li>
+          <li>pergunta</li>
+          <li>resposta</li>
+          <li>estatistica</li>
+        </ul>
+      </div>
+
+      <div id="mod5" class="module-detail" style="display:none; margin-top:30px;">
+        <h3>👥 Formação de Equipes</h3>
+
+        <h4>🎯 Objetivo</h4>
+        <p>
+          Criar grupos automaticamente utilizando critérios definidos pelo professor.
+        </p>
+
+        <h4>⚙️ Funcionalidades Obrigatórias</h4>
+        <ul>
+          <li>Gerar equipes automaticamente</li>
+          <li>Balancear desempenho</li>
+          <li>Considerar habilidades</li>
+          <li>Permitir reorganização</li>
+        </ul>
+
+        <h4>🧩 Entidades Sugeridas</h4>
+        <ul>
+          <li>equipe</li>
+          <li>integrante</li>
+          <li>habilidade</li>
+          <li>criterio</li>
+        </ul>
+      </div>
+
+      <div id="mod6" class="module-detail" style="display:none; margin-top:30px;">
+        <h3>🗺️ Missões Educacionais</h3>
+
+        <h4>🎯 Objetivo</h4>
+        <p>
+          Criar jornadas de aprendizagem baseadas em etapas e missões.
+        </p>
+
+        <h4>⚙️ Funcionalidades Obrigatórias</h4>
+        <ul>
+          <li>Criar missões</li>
+          <li>Criar etapas</li>
+          <li>Progressão</li>
+          <li>Desbloqueios</li>
+          <li>Pontuação</li>
+        </ul>
+
+        <h4>🧩 Entidades Sugeridas</h4>
+        <ul>
+          <li>missao</li>
+          <li>etapa</li>
+          <li>progresso</li>
+          <li>recompensa</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <script>
+      function toggleModule(moduleId) {
+        const modules = document.querySelectorAll('.module-detail');
+
+        modules.forEach(module => {
+          if (module.id === moduleId) {
+            module.style.display = module.style.display === 'none' ? 'block' : 'none';
+          } else {
+            module.style.display = 'none';
+          }
+        });
+      }
+    </script>
+
+    <section id="avaliacao">
+      <h2>📊 Critérios de Avaliação</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Peso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Arquitetura</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>Banco de Dados</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>Backend</td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <td>APIs</td>
+            <td>15</td>
+          </tr>
+          <tr>
+            <td>Organização</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Documentação</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <td>Git/GitHub</td>
+            <td>5</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="fluxo">
+      <h2>🚀 Fluxo da Aplicação</h2>
+
+      <pre>
+Frontend (Streamlit)
+        ↓
+HTTP/JSON
+        ↓
+FastAPI
+        ↓
+Services
+        ↓
+Providers
+        ↓
+Repositories
+        ↓
+Supabase/PostgreSQL
+      </pre>
+    </section>
+
+    <section id="conclusao">
+      <h2>✅ Conclusão</h2>
+
+      <div class="highlight">
+        Backend não é apenas CRUD.
+        <br><br>
+        Backend também é:
+        <ul>
+          <li>Arquitetura</li>
+          <li>Organização</li>
+          <li>Segurança</li>
+          <li>Lógica</li>
+          <li>Escalabilidade</li>
+        </ul>
+      </div>
+
+      <p style="margin-top:20px;">
+        O objetivo do projeto é aproximar os alunos de um ambiente real de desenvolvimento profissional.
+      </p>
+    </section>
+
+  </main>
+
+</body>
+</html>
