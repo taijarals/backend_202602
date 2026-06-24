@@ -1,5 +1,7 @@
 # 🏆 Sistema de Desafios Educacionais
 
+Feito por: Breno Sento-Sé Pimentel Cardoso
+
 ## 📖 Descrição
 
 Projeto desenvolvido utilizando arquitetura em camadas com FastAPI e SQLite.
