@@ -1,0 +1,22 @@
+Projeto Educacional
+
+Tecnologias:
+- Python
+- FastAPI
+- SQLite
+
+Funcionalidades:
+- Cadastro de alunos
+- Listagem de alunos
+
+Arquitetura:
+
+API
+↓
+Service
+↓
+Repository
+↓
+Provider
+↓
+Banco de Dados
