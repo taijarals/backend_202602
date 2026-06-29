@@ -1,0 +1,117 @@
+body{
+
+    background:#f5f5f5;
+
+    font-family:Arial;
+
+}
+
+.container{
+
+    width:900px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:30px;
+
+    margin-top:40px;
+
+    border-radius:10px;
+
+    box-shadow:0 0 10px rgba(0,0,0,.2);
+
+}
+
+.questao{
+
+    margin-bottom:30px;
+
+}
+
+button{
+
+    padding:15px;
+
+    width:100%;
+
+    font-size:18px;
+
+    background:#1976d2;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+button:hover{
+
+    background:#125ca3;
+
+}
+
+#tempo{
+
+    color:red;
+
+}
+
+/* ===== LOGIN ===== */
+
+.aba {
+    width: 48%;
+    padding: 10px;
+    font-size: 15px;
+    background: #ddd;
+    color: #333;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.aba-ativa {
+    background: #1976d2;
+    color: white;
+}
+
+.campo {
+    margin-bottom: 16px;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #444;
+}
+
+.campo input {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.erro {
+    color: #c62828;
+    font-size: 14px;
+    margin-bottom: 12px;
+    min-height: 18px;
+}
+
+.sucesso {
+    color: #2e7d32;
+    font-size: 14px;
+    margin-bottom: 12px;
+    min-height: 18px;
+}

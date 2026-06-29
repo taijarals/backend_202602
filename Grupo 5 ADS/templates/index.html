@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Mini Provas</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Mini Provas</h1>
+
+    <h2 id="titulo"></h2>
+
+    <h3 id="tempo">
+        Tempo restante: 05:00
+    </h3>
+
+    <div id="questoes"></div>
+
+    <button onclick="finalizarProva()">
+
+        Finalizar Prova
+
+    </button>
+
+    <div id="resultado"></div>
+
+</div>
+
+<script src="/static/js/app.js"></script>
+
+</body>
+
+</html>
+<!-- Botão de logout no topo -->
+<script>
+    // Adiciona botão de sair após carregar
+    window.addEventListener("DOMContentLoaded", () => {
+        const btn = document.createElement("button");
+        btn.textContent = "Sair";
+        btn.style.cssText = "width:auto;padding:8px 16px;font-size:13px;background:#888;float:right;margin-bottom:10px";
+        btn.onclick = () => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("usuario_id");
+            window.location.href = "/login";
+        };
+        document.querySelector(".container").prepend(btn);
+    });
+</script>

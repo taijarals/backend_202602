@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Provas - Login</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="container" style="max-width:420px">
+
+    <h1>Mini Provas</h1>
+
+    <div id="abas">
+        <button id="aba-login" onclick="mostrarAba('login')" class="aba aba-ativa">Entrar</button>
+        <button id="aba-cadastro" onclick="mostrarAba('cadastro')" class="aba">Cadastrar</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div id="form-login">
+        <div class="campo">
+            <label>Email</label>
+            <input type="email" id="login-email" placeholder="seu@email.com">
+        </div>
+        <div class="campo">
+            <label>Senha</label>
+            <input type="password" id="login-senha" placeholder="••••••••">
+        </div>
+        <div id="erro-login" class="erro"></div>
+        <button onclick="login()">Entrar</button>
+    </div>
+
+    <!-- CADASTRO -->
+    <div id="form-cadastro" style="display:none">
+        <div class="campo">
+            <label>Nome</label>
+            <input type="text" id="cadastro-nome" placeholder="Seu nome">
+        </div>
+        <div class="campo">
+            <label>Email</label>
+            <input type="email" id="cadastro-email" placeholder="seu@email.com">
+        </div>
+        <div class="campo">
+            <label>Senha</label>
+            <input type="password" id="cadastro-senha" placeholder="Mínimo 6 caracteres">
+        </div>
+        <div id="erro-cadastro" class="erro"></div>
+        <div id="sucesso-cadastro" class="sucesso"></div>
+        <button onclick="cadastrar()">Criar conta</button>
+    </div>
+
+</div>
+
+<script src="/static/js/auth.js"></script>
+
+</body>
+</html>
